@@ -1,4 +1,4 @@
-# ManajemenDataSiswa
+# Manajemen Data Siswa
 Aplikasi sederhana untuk manajemen data siswa
 
 <h4>Fitur</h4>
