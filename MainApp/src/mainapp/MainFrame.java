@@ -23,6 +23,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     public dbAccess db = new dbAccess();
     public GlobalVariabel gv = new GlobalVariabel();
+    private TambahData TD = new TambahData();
+    private UbahData UD = new UbahData();
+    private Tentang TT = new Tentang();
     
     /**
      * Creates new form MainFrame
@@ -238,11 +241,15 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahDataActionPerformed
-        new TambahData().setVisible(true);
+        TD.setVisible(false);
+        TD.setVisible(true);
+        TD.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTambahDataActionPerformed
 
     private void btnUbahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahDataActionPerformed
-        new UbahData().setVisible(true);
+        UD.setVisible(false);
+        UD.setVisible(true);
+        UD.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnUbahDataActionPerformed
 
     private void tabelSiswaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelSiswaFocusGained
@@ -257,9 +264,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelSiswaMouseClicked
 
     private void btnHapusDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDataActionPerformed
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menghapus data ini?","Perhatian",JOptionPane.YES_NO_OPTION);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            db.deleteDataSiswa();
+        if(gv.singleInstance < 1){
+            gv.singleInstance = 1;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menghapus data ini?","Perhatian",JOptionPane.YES_NO_OPTION);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                db.deleteDataSiswa();
+                gv.singleInstance = 0;
+            }
         }
     }//GEN-LAST:event_btnHapusDataActionPerformed
 
@@ -268,22 +279,34 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefreshTabelActionPerformed
 
     private void btnEksporDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEksporDataActionPerformed
-        try {
-            db.exportDataSiswa();
-        } catch (Exception ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        if(gv.singleInstance < 1){
+            gv.singleInstance = 1;
+            try {
+                db.exportDataSiswa();
+            } catch (Exception ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnEksporDataActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menyetel ulang data siswa? Seluruh data akan terhapus","Perhatian",JOptionPane.YES_NO_OPTION);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            db.resetDataSiswa();
+        if(gv.singleInstance < 1){
+            gv.singleInstance = 1;
+            int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menyetel ulang data siswa? Seluruh data akan terhapus","Perhatian",JOptionPane.YES_NO_OPTION);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                db.resetDataSiswa();
+                gv.singleInstance = 0;
+            }
+            else{
+                gv.singleInstance = 0;
+            }
         }
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Tentang().setVisible(true);
+        TT.setVisible(false);
+        TT.setVisible(true);
+        TT.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
