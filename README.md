@@ -14,8 +14,8 @@ Aplikasi sederhana untuk manajemen data siswa
 
 Aplikasi sangat sederhana, sangat cocok untuk pemula yang belajar Java dengan Database SQLite + CRUDS. Library - library yang dibutuhkan juga sudah tersedia di dalam project ini.
 <br/>
+<hr/>
 Unduh project yang telah dicompile: 
-
 <h3>V.1.0.1</h3>
 <h5>Major Bug Fix</h5>
 <strong>Fitur</strong>
@@ -23,7 +23,7 @@ Unduh project yang telah dicompile:
   <li>Single Instance</li>
 </ol>
 File: <a href="http://cdn.unydevelopernetwork.com/mil-system/manajemen_data_siswa/ManajemenDataSiswav101.zip">Unduh di sini</a>
-
+<hr/>
 <h3>V.1.0</h3>
 <h5>Versi Original</h5>
 <strong>Fitur</strong>
