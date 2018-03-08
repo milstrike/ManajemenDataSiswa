@@ -21,17 +21,31 @@ public class UbahData extends javax.swing.JFrame {
         initComponents();
         initLevel0();
         initLevel1();
+        initLevel2();
     }
     
     private void initLevel0(){
         setLocationRelativeTo(null);
     }
     
-    private void initLevel1(){
+    public void initLevel1(){
         inputNISN.setText(gv.NISNSiswa);
         inputNamaSiswa.setText(gv.NamaSiswa);
         inputKelasSiswa.setText(gv.KelasSiswa);
         inputJurusanSiswa.setText(gv.JurusanSiswa);
+    }
+    
+    private void initLevel2(){
+        addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+            inputNISN.setEditable(false);
+            editNISN = 0;
+            ubahNISN.setSelected(false);
+            setAlwaysOnTop(false);
+            dispose();
+        }
+        });
     }
 
     /**
@@ -57,7 +71,7 @@ public class UbahData extends javax.swing.JFrame {
         btnSimpanUbah = new javax.swing.JButton();
         ubahNISN = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Ubah Data Siswa");
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
@@ -177,21 +191,32 @@ public class UbahData extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBatalUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalUbahActionPerformed
+        inputNISN.setEditable(false);
+        editNISN = 0;
+        ubahNISN.setSelected(false);
+        setAlwaysOnTop(false);
         dispose();
     }//GEN-LAST:event_btnBatalUbahActionPerformed
 
     private void btnSimpanUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanUbahActionPerformed
+        setAlwaysOnTop(false);
         gv.NISNSiswa = inputNISN.getText();
         gv.NamaSiswa = inputNamaSiswa.getText();
         gv.KelasSiswa = inputKelasSiswa.getText();
         gv.JurusanSiswa = inputJurusanSiswa.getText();
-        if(editNISN == 0){
-            db.updateDataSiswa();
-            dispose();
+        if(inputNISN.getText().equals("")||inputNamaSiswa.getText().equals("")||inputKelasSiswa.getText().equals("")||inputJurusanSiswa.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Kolom ada yang kosong!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+            setAlwaysOnTop(true);
+        }else{
+            if(editNISN == 0){
+                db.updateDataSiswa();
+                dispose();
+            }
+            else{
+                checkDataFirst();
+            }
         }
-        else{
-            checkDataFirst();
-        }
+        
     }//GEN-LAST:event_btnSimpanUbahActionPerformed
 
     private void ubahNISNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahNISNActionPerformed
@@ -215,6 +240,9 @@ public class UbahData extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"NISN Sudah ada!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
         }
         else{
+            inputNISN.setEditable(false);
+            editNISN = 0;
+            ubahNISN.setSelected(false);
             db.updateDataSiswa();
             dispose();
         }

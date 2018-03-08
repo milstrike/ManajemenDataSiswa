@@ -22,10 +22,21 @@ public class TambahData extends javax.swing.JFrame {
     public TambahData() {
         initComponents();
         initLevel0();
+        initLevel1();
     }
     
     private void initLevel0(){
         setLocationRelativeTo(null);
+    }
+    
+    private void initLevel1(){
+        addWindowListener(new java.awt.event.WindowAdapter() {
+    @Override
+    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+        setAlwaysOnTop(false);
+        dispose();
+    }
+        });
     }
 
     /**
@@ -50,7 +61,7 @@ public class TambahData extends javax.swing.JFrame {
         btnSimpanData = new javax.swing.JButton();
         btnBatalTambahData = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Tambah Data Siswa");
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
@@ -153,15 +164,23 @@ public class TambahData extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBatalTambahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalTambahDataActionPerformed
+        setAlwaysOnTop(false);
         dispose();
     }//GEN-LAST:event_btnBatalTambahDataActionPerformed
 
     private void btnSimpanDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanDataActionPerformed
+        setAlwaysOnTop(false);
         gv.NISNSiswa = inputNISN.getText();
         gv.NamaSiswa = inputNamaSiswa.getText();
         gv.KelasSiswa = inputKelasSiswa.getText();
         gv.JurusanSiswa = inputJurusanSiswa.getText();
-        checkDataFirst();
+        if(inputNISN.getText().equals("")||inputNamaSiswa.getText().equals("")||inputKelasSiswa.getText().equals("")||inputJurusanSiswa.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Kolom ada yang kosong!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+            setAlwaysOnTop(true);
+        }else{
+            checkDataFirst();
+        }
+        
     }//GEN-LAST:event_btnSimpanDataActionPerformed
 
     private void checkDataFirst(){

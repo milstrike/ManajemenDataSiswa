@@ -241,15 +241,25 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTambahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahDataActionPerformed
-        TD.setVisible(false);
-        TD.setVisible(true);
-        TD.setLocationRelativeTo(null);
+        if(TD.isVisible()){
+            
+        }
+        else{
+            TD.setVisible(true);
+            TD.setAlwaysOnTop(true);
+        }
     }//GEN-LAST:event_btnTambahDataActionPerformed
 
     private void btnUbahDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahDataActionPerformed
-        UD.setVisible(false);
-        UD.setVisible(true);
-        UD.setLocationRelativeTo(null);
+        if(UD.isVisible()){
+            
+        }
+        else{
+            UD.invalidate();
+            UD.setVisible(true);
+            UD.initLevel1();
+            UD.setAlwaysOnTop(true);
+        }
     }//GEN-LAST:event_btnUbahDataActionPerformed
 
     private void tabelSiswaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tabelSiswaFocusGained
@@ -264,14 +274,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelSiswaMouseClicked
 
     private void btnHapusDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusDataActionPerformed
-        if(gv.singleInstance < 1){
-            gv.singleInstance = 1;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menghapus data ini?","Perhatian",JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menghapus data ini?","Perhatian",JOptionPane.YES_NO_OPTION);
             if(dialogResult == JOptionPane.YES_OPTION){
                 db.deleteDataSiswa();
-                gv.singleInstance = 0;
             }
-        }
     }//GEN-LAST:event_btnHapusDataActionPerformed
 
     private void btnRefreshTabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTabelActionPerformed
@@ -290,23 +296,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEksporDataActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        if(gv.singleInstance < 1){
-            gv.singleInstance = 1;
-            int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menyetel ulang data siswa? Seluruh data akan terhapus","Perhatian",JOptionPane.YES_NO_OPTION);
+        int dialogResult = JOptionPane.showConfirmDialog (null, "Yakin ingin menyetel ulang data siswa? Seluruh data akan terhapus","Perhatian",JOptionPane.YES_NO_OPTION);
             if(dialogResult == JOptionPane.YES_OPTION){
                 db.resetDataSiswa();
-                gv.singleInstance = 0;
             }
-            else{
-                gv.singleInstance = 0;
-            }
-        }
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TT.setVisible(false);
-        TT.setVisible(true);
-        TT.setLocationRelativeTo(null);
+        if(TT.isVisible()){
+            
+        }
+        else{
+            TT.setVisible(true);
+            TT.setAlwaysOnTop(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

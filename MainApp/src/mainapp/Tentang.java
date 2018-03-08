@@ -16,6 +16,7 @@ public class Tentang extends javax.swing.JFrame {
         initComponents();
         initLevel0();
         initLevel1();
+        initLevel2();
     }
     
     private void initLevel0(){
@@ -23,6 +24,16 @@ public class Tentang extends javax.swing.JFrame {
     }
     private void initLevel1(){
         versioning.setText("Versi: " + gv.versioning);
+    }
+    
+    private void initLevel2(){
+        addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+            setAlwaysOnTop(false);
+            dispose();
+        }
+        });
     }
 
     /**
@@ -44,7 +55,7 @@ public class Tentang extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Tentang Aplikasi");
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
@@ -127,6 +138,7 @@ public class Tentang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setAlwaysOnTop(false);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
