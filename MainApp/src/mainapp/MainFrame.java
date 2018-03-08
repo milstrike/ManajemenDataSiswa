@@ -285,14 +285,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefreshTabelActionPerformed
 
     private void btnEksporDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEksporDataActionPerformed
-        if(gv.singleInstance < 1){
-            gv.singleInstance = 1;
-            try {
+        try {
                 db.exportDataSiswa();
             } catch (Exception ex) {
                 Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
     }//GEN-LAST:event_btnEksporDataActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

@@ -19,6 +19,5 @@ public class GlobalVariabel {
     public static int jumlahDataStored;
     public static int tableChanged;
     public static int ButtonProverty = 0;
-    public static int singleInstance = 0;
     public static String versioning = "1.0.1";
 }

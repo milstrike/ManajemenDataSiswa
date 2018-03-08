@@ -203,7 +203,6 @@ public class dbAccess {
                             }else if(sf == JFileChooser.CANCEL_OPTION){
                                 JOptionPane.showMessageDialog(null, "Export gagal!", "Error", JOptionPane.ERROR_MESSAGE);
                              }
-        gv.singleInstance = 0;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
